@@ -26,8 +26,18 @@ Currently implemented:
   * Helpers<sup>[1]</sup>
     * ListBox
       * GetSelectedRowsIndices
+* External<sup>[2]</sup>
+  * Unity<sup>[3]</sup>
+    * LauncherEntry
+      * GetForDesktopID
+      * SetProgressVisible
+      * SetProgress
 
 <sup>[1]</sup> Helpers are functions that do not follow gir.core API, they are workarounds created to avoid complexity that is required for proper implementation of related methods.
+
+<sup>[2]</sup> External are bindings for libraries that are not a part of gir.core, but may be useful when creating GTK apps.
+
+<sup>[3]</sup> Linux-only.
 
 If you develop apps with gir.core and found something missing that is not implemented here, feel free to open an issue with request or send a PR with your implementation.
 
