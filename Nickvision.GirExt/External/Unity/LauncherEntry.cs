@@ -17,6 +17,22 @@ public partial class LauncherEntry
     private readonly nint _handle;
 
     /// <summary>
+    /// Visibility of launcher's progress bar
+    /// </summary>
+    public bool ProgressVisible
+    {
+        set => SetProgressVisible(value);
+    }
+
+    /// <summary>
+    /// Value for progress bar (0.0-1.0)
+    /// </summary>
+    public double Progress
+    {
+        set => SetProgress(value);
+    }
+
+    /// <summary>
     /// Construct Launcher Entry
     /// </summary>
     /// <param name="desktopId">Desktop entry ID</param>
