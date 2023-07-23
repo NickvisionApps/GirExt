@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace GirExt;
+namespace Nickvision.GirExt;
 
 /// <summary>
 /// Extensions for classes in Gtk namespace

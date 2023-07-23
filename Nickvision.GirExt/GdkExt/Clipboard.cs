@@ -1,4 +1,4 @@
-namespace GirExt;
+namespace Nickvision.GirExt;
 
 /// <summary>
 /// Extensions for classes in Gdk namespace

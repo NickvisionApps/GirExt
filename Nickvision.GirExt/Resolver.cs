@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace GirExt;
+namespace Nickvision.GirExt;
 
 /// <summary>
 /// Libraries import resolver

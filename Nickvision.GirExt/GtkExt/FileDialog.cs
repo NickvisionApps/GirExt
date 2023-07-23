@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace GirExt;
+namespace Nickvision.GirExt;
 
 /// <summary>
 /// Extensions for classes in Gtk namespace
