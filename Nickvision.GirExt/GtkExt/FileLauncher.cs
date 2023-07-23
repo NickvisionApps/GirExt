@@ -11,7 +11,7 @@ public static partial class GtkExt
     /// <param name="launcher">File launcher</param>
     /// <param name="parent">Parent window</param>
     /// <exception>Thrown if failed to launch</exception>
-    /// <returns>True if successfull, else false</returns>
+    /// <returns>True if successful, else false</returns>
     public static Task<bool> LaunchAsync(this Gtk.FileLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();
@@ -42,12 +42,12 @@ public static partial class GtkExt
     
 
     /// <summary>
-    /// Extension method for Gtk.FileLauncher to open folder containg a file
+    /// Extension method for Gtk.FileLauncher to open folder containing a file
     /// </summary>
     /// <param name="launcher">File launcher</param>
     /// <param name="parent">Parent window</param>
     /// <exception>Thrown if failed to launch</exception>
-    /// <returns>True if successfull, else false</returns>
+    /// <returns>True if successful, else false</returns>
     public static Task<bool> OpenContainingFolderAsync(this Gtk.FileLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();

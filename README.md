@@ -25,11 +25,11 @@ Currently implemented:
     * LaunchAsync
   * Helpers<sup>[1]</sup>
     * ListBox
-      * GetSelectedRowsIndeces
+      * GetSelectedRowsIndices
 
 <sup>[1]</sup> Helpers are functions that do not follow gir.core API, they are workarounds created to avoid complexity that is required for proper implementation of related methods.
 
-If you develop apps with gir.core and found something missing that is not implemented here, feel free to open an issue with request or send a PR with your implemenation.
+If you develop apps with gir.core and found something missing that is not implemented here, feel free to open an issue with request or send a PR with your implementation.
 
 <!--# Installation
 <a href='https://www.nuget.org/packages/Nickvision.MPVSharp/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'/></a>-->

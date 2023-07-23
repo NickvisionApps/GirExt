@@ -11,7 +11,7 @@ public static partial class GtkExt
     /// <param name="launcher">URI launcher</param>
     /// <param name="parent">Parent window</param>
     /// <exception>Thrown if failed to launch</exception>
-    /// <returns>True if successfull, else false</returns>
+    /// <returns>True if successful, else false</returns>
     public static Task<bool> LaunchAsync(this Gtk.UriLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();

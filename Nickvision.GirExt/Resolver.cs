@@ -7,9 +7,10 @@ namespace Nickvision.GirExt;
 /// <summary>
 /// Libraries import resolver
 /// </summary>
-public static class Resolver {
+public static class Resolver 
+{
     /// <summary>
-    /// Dictionary containg pointers to native libraries
+    /// Dictionary containing pointers to native libraries
     /// </summary>
     private static Dictionary<string, nint> _libraries = new Dictionary<string, nint>();
     

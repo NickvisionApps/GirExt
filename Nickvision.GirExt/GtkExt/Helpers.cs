@@ -6,7 +6,8 @@ namespace Nickvision.GirExt;
 /// <summary>
 /// Extensions for classes in Gtk namespace
 /// </summary>
-public unsafe static partial class GtkExt {
+public unsafe static partial class GtkExt 
+{
     [StructLayout(LayoutKind.Sequential)]
     private struct GLibList
     {
@@ -21,11 +22,11 @@ public unsafe static partial class GtkExt {
     private static partial int gtk_list_box_row_get_index(nint row);
     
     /// <summary>
-    /// Helper extension method for Gtk.ListBox to get indeces of selected row
+    /// Helper extension method for Gtk.ListBox to get indices of selected row
     /// </summary>
     /// <param name="box">List box</param>
-    /// <returns>List of indeces</returns>
-    public static List<int> GetSelectedRowsIndeces(this Gtk.ListBox box)
+    /// <returns>List of indices</returns>
+    public static List<int> GetSelectedRowsIndices(this Gtk.ListBox box)
     {
         Resolver.SetResolver();
         var list = new List<int>();
