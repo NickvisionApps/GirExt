@@ -5,6 +5,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PackageId>Nickvision.GirExt</PackageId>
+    <Version>2023.7.0</Version>
+    <Company>Nickvision</Company>
+    <Authors>Nickvision</Authors>
+    <Description>Extensions library for gir.core</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>(c) Nickvision 2021-2023</Copyright>
+    <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NickvisionApps/Aura</RepositoryUrl>
+    <PackageReleaseNotes>- Initial Release</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
