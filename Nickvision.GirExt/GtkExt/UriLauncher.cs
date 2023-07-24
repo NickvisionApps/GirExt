@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 namespace Nickvision.GirExt;
 
 /// <summary>
@@ -10,32 +13,36 @@ public static partial class GtkExt
     /// </summary>
     /// <param name="launcher">URI launcher</param>
     /// <param name="parent">Parent window</param>
-    /// <exception>Thrown if failed to launch</exception>
+    /// <exception cref="Exception">Thrown if failed to launch</exception>
     /// <returns>True if successful, else false</returns>
     public static Task<bool> LaunchAsync(this Gtk.UriLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();
 
-        void Callback(IntPtr sourceObject, IntPtr res, IntPtr userData)
+        var callback = new Gio.Internal.AsyncReadyCallbackAsyncHandler((sourceObject, res, data) =>
         {
-            var value = Gtk.Internal.UriLauncher.LaunchFinish(sourceObject, res, out var error);
-            if (!error.IsInvalid)
+            if (sourceObject is null)
             {
-                tcs.SetException(new Exception("Failed to launch a URI."));
+                tcs.SetException(new Exception("Missing source object"));
             }
             else
             {
-                tcs.SetResult(value);
+                var launchValue = Gtk.Internal.UriLauncher.LaunchFinish(sourceObject.Handle, res.Handle, out var error);
+                if (!error.IsInvalid)
+                {
+                    throw new Exception(error.ToString() ?? "");
+                }
+                tcs.SetResult(launchValue);
             }
-        }
+        });
 
         Gtk.Internal.UriLauncher.Launch(
             self: launcher.Handle,
             parent: parent.Handle,
             cancellable: IntPtr.Zero,
-            callback: Callback,
+            callback: callback.NativeCallback,
             userData: IntPtr.Zero
-        );
+            );
 
         return tcs.Task;
     }
