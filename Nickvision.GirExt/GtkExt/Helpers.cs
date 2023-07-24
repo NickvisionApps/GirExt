@@ -20,6 +20,8 @@ public unsafe static partial class GtkExt
     private static partial GLibList* gtk_list_box_get_selected_rows(nint box);
     [LibraryImport("gtk")]
     private static partial int gtk_list_box_row_get_index(nint row);
+    [LibraryImport("gtk")]
+    private static partial void gtk_color_dialog_button_set_rgba(nint button, ref GdkExt.RGBA rgba);
     
     /// <summary>
     /// Helper extension method for Gtk.ListBox to get indices of selected row
@@ -36,5 +38,17 @@ public unsafe static partial class GtkExt
             list.Add(gtk_list_box_row_get_index(ptr->data));
         }
         return list;
+    }
+
+    public static GdkExt.RGBA GetExtRgba(this Gtk.ColorDialogButton button)
+    {
+        Gdk.RGBA gdkColor = button.GetRgba();
+        return Marshal.PtrToStructure<GdkExt.RGBA>(gdkColor.Handle.DangerousGetHandle());
+    }
+
+    public static void SetExtRgba(this Gtk.ColorDialogButton button, GdkExt.RGBA color)
+    {
+        Resolver.SetResolver();
+        gtk_color_dialog_button_set_rgba(button.Handle, ref color);
     }
 }

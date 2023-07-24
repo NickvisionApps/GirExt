@@ -30,9 +30,9 @@ public static partial class GtkExt
                 var fileValue = Gtk.Internal.FileDialog.OpenFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (fileValue == IntPtr.Zero)
+                else if (fileValue == IntPtr.Zero)
                 {
                     tcs.SetResult(null);
                 }
@@ -77,9 +77,9 @@ public static partial class GtkExt
                 var listValue = Gtk.Internal.FileDialog.OpenMultipleFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (listValue == IntPtr.Zero)
+                else if (listValue == IntPtr.Zero)
                 {
                     tcs.SetResult(null);
                 }
@@ -124,9 +124,9 @@ public static partial class GtkExt
                 var fileValue = Gtk.Internal.FileDialog.SaveFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (fileValue == IntPtr.Zero)
+                else if (fileValue == IntPtr.Zero)
                 {
                     tcs.SetResult(null);
                 }
@@ -171,9 +171,9 @@ public static partial class GtkExt
                 var fileValue = Gtk.Internal.FileDialog.SelectFolderFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (fileValue == IntPtr.Zero)
+                else if (fileValue == IntPtr.Zero)
                 {
                     tcs.SetResult(null);
                 }
@@ -218,9 +218,9 @@ public static partial class GtkExt
                 var listValue = Gtk.Internal.FileDialog.SelectMultipleFoldersFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (listValue == IntPtr.Zero)
+                else if (listValue == IntPtr.Zero)
                 {
                     tcs.SetResult(null);
                 }

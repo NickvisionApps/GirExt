@@ -29,9 +29,9 @@ public static partial class GdkExt
                 var stringHandle = Gdk.Internal.Clipboard.ReadTextFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
                 }
-                if (stringHandle.IsInvalid)
+                else if (stringHandle.IsInvalid)
                 {
                     tcs.SetResult(null);
                 }
