@@ -7,7 +7,8 @@ namespace Nickvision.GirExt;
 /// <summary>
 /// Extensions for classes in Gtk namespace
 /// </summary>
-public static partial class GtkExt {
+public static partial class GtkExt
+{
     /// <summary>
     /// Extension method for Gtk.ColorDialog to choose a color
     /// </summary>
