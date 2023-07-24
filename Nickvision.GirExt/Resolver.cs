@@ -42,16 +42,18 @@ public static class Resolver
         {
             filename = libraryName switch
             {
+                "gdk" => "libgdk-3-0.dll",
                 "gtk" => "libgtk-4-1.dll",
-                _ => ""
+                _ => libraryName
             };
         }
         else
         {
             filename = libraryName switch
             {
+                "gdk" => "libgdk-3.so.0",
                 "gtk" => "libgtk-4.so.1",
-                _ => ""
+                _ => libraryName
             };
         }
         _libraries[libraryName] = NativeLibrary.Load(filename, assembly, searchPath);
