@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 namespace Nickvision.GirExt;
 
 /// <summary>
@@ -10,30 +13,34 @@ public static partial class GtkExt
     /// </summary>
     /// <param name="launcher">File launcher</param>
     /// <param name="parent">Parent window</param>
-    /// <exception>Thrown if failed to launch</exception>
+    /// <exception cref="Exception">Thrown if failed to launch</exception>
     /// <returns>True if successful, else false</returns>
     public static Task<bool> LaunchAsync(this Gtk.FileLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();
 
-        void Callback(IntPtr sourceObject, IntPtr res, IntPtr userData)
+        var callback = new Gio.Internal.AsyncReadyCallbackAsyncHandler((sourceObject, res, data) =>
         {
-            var value = Gtk.Internal.FileLauncher.LaunchFinish(sourceObject, res, out var error);
-            if (!error.IsInvalid)
+            if (sourceObject is null)
             {
-                tcs.SetException(new Exception("Failed to launch a file."));
+                tcs.SetException(new Exception("Missing source object"));
             }
             else
             {
-                tcs.SetResult(value);
+                var launchValue = Gtk.Internal.FileLauncher.LaunchFinish(sourceObject.Handle, res.Handle, out var error);
+                if (!error.IsInvalid)
+                {
+                    throw new Exception(error.ToString() ?? "");
+                }
+                tcs.SetResult(launchValue);
             }
-        }
+        });
 
         Gtk.Internal.FileLauncher.Launch(
             self: launcher.Handle,
             parent: parent.Handle,
             cancellable: IntPtr.Zero,
-            callback: Callback,
+            callback: callback.NativeCallback,
             userData: IntPtr.Zero
             );
 
@@ -46,32 +53,36 @@ public static partial class GtkExt
     /// </summary>
     /// <param name="launcher">File launcher</param>
     /// <param name="parent">Parent window</param>
-    /// <exception>Thrown if failed to launch</exception>
+    /// <exception cref="Exception">Thrown if failed to launch</exception>
     /// <returns>True if successful, else false</returns>
     public static Task<bool> OpenContainingFolderAsync(this Gtk.FileLauncher launcher, Gtk.Window parent)
     {
         var tcs = new TaskCompletionSource<bool>();
 
-        void Callback(IntPtr sourceObject, IntPtr res, IntPtr userData)
+        var callback = new Gio.Internal.AsyncReadyCallbackAsyncHandler((sourceObject, res, data) =>
         {
-            var value = Gtk.Internal.FileLauncher.OpenContainingFolderFinish(sourceObject, res, out var error);
-            if (!error.IsInvalid)
+            if (sourceObject is null)
             {
-                tcs.SetException(new Exception("Failed to open containing folder."));
+                tcs.SetException(new Exception("Missing source object"));
             }
             else
             {
-                tcs.SetResult(value);
+                var launchValue = Gtk.Internal.FileLauncher.OpenContainingFolderFinish(sourceObject.Handle, res.Handle, out var error);
+                if (!error.IsInvalid)
+                {
+                    throw new Exception(error.ToString() ?? "");
+                }
+                tcs.SetResult(launchValue);
             }
-        }
+        });
 
         Gtk.Internal.FileLauncher.OpenContainingFolder(
             self: launcher.Handle,
             parent: parent.Handle,
             cancellable: IntPtr.Zero,
-            callback: Callback,
+            callback: callback.NativeCallback,
             userData: IntPtr.Zero
-        );
+            );
 
         return tcs.Task;
     }

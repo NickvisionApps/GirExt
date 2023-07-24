@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.GirExt</PackageId>
-    <Version>2023.7.0</Version>
+    <Version>2023.7.1</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Extensions library for gir.core</Description>
@@ -15,7 +14,7 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/Aura</RepositoryUrl>
-    <PackageReleaseNotes>- Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>- Improved internal storage of callbacks</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 
