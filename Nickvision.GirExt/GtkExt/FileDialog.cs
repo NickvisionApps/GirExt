@@ -195,4 +195,51 @@ public static partial class GtkExt
 
         return tcs.Task;
     }
+
+    /// <summary>
+    /// Extension method for Gtk.FileDialog to select multiple folders
+    /// </summary>
+    /// <param name="dialog">File dialog</param>
+    /// <param name="parent">Parent window</param>
+    /// <exception cref="Exception">Thrown if failed to select multiple folders</exception>
+    /// <returns>File if successful, or null</returns>
+    public static Task<Gio.ListModel?> SelectMultipleFoldersAsync(this Gtk.FileDialog dialog, Gtk.Window parent)
+    {
+        var tcs = new TaskCompletionSource<Gio.ListModel?>();
+
+        var callback = new Gio.Internal.AsyncReadyCallbackAsyncHandler((sourceObject, res, data) =>
+        {
+            if (sourceObject is null)
+            {
+                tcs.SetException(new Exception("Missing source object"));
+            }
+            else
+            {
+                var listValue = Gtk.Internal.FileDialog.SelectMultipleFoldersFinish(sourceObject.Handle, res.Handle, out var error);
+                if (!error.IsInvalid)
+                {
+                    throw new Exception(error.ToString() ?? "");
+                }
+                if (listValue == IntPtr.Zero)
+                {
+                    tcs.SetResult(null);
+                }
+                else
+                {
+                    var value = new Gio.ListModelHelper(listValue, true);
+                    tcs.SetResult(value);
+                }
+            }
+        });
+
+        Gtk.Internal.FileDialog.SelectMultipleFolders(
+            self: dialog.Handle,
+            parent: parent.Handle,
+            cancellable: IntPtr.Zero,
+            callback: callback.NativeCallback,
+            userData: IntPtr.Zero
+            );
+
+        return tcs.Task;
+    }
 }
