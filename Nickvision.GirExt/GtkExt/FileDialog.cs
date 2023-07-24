@@ -56,6 +56,53 @@ public static partial class GtkExt
     }
 
     /// <summary>
+    /// Extension method for Gtk.FileDialog to open multiple files
+    /// </summary>
+    /// <param name="dialog">File dialog</param>
+    /// <param name="parent">Parent window</param>
+    /// <exception cref="Exception">Thrown if failed to open multiple files</exception>
+    /// <returns>File if successful, or null</returns>
+    public static Task<Gio.ListModel?> OpenMultipleAsync(this Gtk.FileDialog dialog, Gtk.Window parent)
+    {
+        var tcs = new TaskCompletionSource<Gio.ListModel?>();
+
+        var callback = new Gio.Internal.AsyncReadyCallbackAsyncHandler((sourceObject, res, data) =>
+        {
+            if (sourceObject is null)
+            {
+                tcs.SetException(new Exception("Missing source object"));
+            }
+            else
+            {
+                var listValue = Gtk.Internal.FileDialog.OpenMultipleFinish(sourceObject.Handle, res.Handle, out var error);
+                if (!error.IsInvalid)
+                {
+                    throw new Exception(error.ToString() ?? "");
+                }
+                if (listValue == IntPtr.Zero)
+                {
+                    tcs.SetResult(null);
+                }
+                else
+                {
+                    var value = new Gio.ListModelHelper(listValue, true);
+                    tcs.SetResult(value);
+                }
+            }
+        });
+
+        Gtk.Internal.FileDialog.OpenMultiple(
+            self: dialog.Handle,
+            parent: parent.Handle,
+            cancellable: IntPtr.Zero,
+            callback: callback.NativeCallback,
+            userData: IntPtr.Zero
+            );
+
+        return tcs.Task;
+    }
+
+    /// <summary>
     /// Extension method for Gtk.FileDialog to save a file
     /// </summary>
     /// <param name="dialog">File dialog</param>
