@@ -14,7 +14,12 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/Aura</RepositoryUrl>
-    <PackageReleaseNotes>- Improved internal storage of callbacks</PackageReleaseNotes>
+    <PackageReleaseNotes>
+        - Added ColorDialog functions
+        - Added Gdk.RGBA helpers
+        - Added OpenMultiple and SelectMultiple functions for FileDialog
+        - Improved internal storage of callbacks
+    </PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 

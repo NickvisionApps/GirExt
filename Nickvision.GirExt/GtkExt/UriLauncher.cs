@@ -30,7 +30,8 @@ public static partial class GtkExt
                 var launchValue = Gtk.Internal.UriLauncher.LaunchFinish(sourceObject.Handle, res.Handle, out var error);
                 if (!error.IsInvalid)
                 {
-                    throw new Exception(error.ToString() ?? "");
+                    tcs.SetException(new Exception(error.ToString() ?? ""));
+                    return;
                 }
                 tcs.SetResult(launchValue);
             }

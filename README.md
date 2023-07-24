@@ -13,17 +13,27 @@ Currently implemented:
 * Gdk
   * Clipboard
     * ReadTextAsync
+  * Helpers<sup>[1]</sup>
+    * GdkExt.RGBA
+      * Parse
 * Gtk
+  * ColorDialog
+    * ChooseRgbaAsync
   * FileDialog
     * OpenAsync
+    * OpenMultipleAsync
     * SaveAsync
     * SelectFolderAsync
+    * SelectMultipleFoldersAsync
   * FileLauncher
     * LaunchAsync
     * OpenContainingFolderAsync
   * UriLauncher
     * LaunchAsync
   * Helpers<sup>[1]</sup>
+    * ColorDialog
+      * GetExtRgba
+      * SetExtRgba
     * ListBox
       * GetSelectedRowsIndices
 * External<sup>[2]</sup>
