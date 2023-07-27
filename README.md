@@ -17,8 +17,10 @@ Currently implemented:
     * GdkExt.RGBA
       * Parse
 * Gtk
+  * AlertDialog
+    * ChooseAsync
   * ColorDialog
-    * ChooseRgbaAsync
+    * ChooseRgbaAsync *(returns GdkExt.RGBA)*
   * FileDialog
     * OpenAsync
     * OpenMultipleAsync
@@ -34,6 +36,8 @@ Currently implemented:
     * ColorDialog
       * GetExtRgba
       * SetExtRgba
+    * FlowBox
+      * GetSelectedChildrenIndices
     * ListBox
       * GetSelectedRowsIndices
 * External<sup>[2]</sup>
@@ -51,8 +55,8 @@ Currently implemented:
 
 If you develop apps with gir.core and found something missing that is not implemented here, feel free to open an issue with request or send a PR with your implementation.
 
-<!--# Installation
-<a href='https://www.nuget.org/packages/Nickvision.MPVSharp/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'/></a>-->
+# Installation
+<a href='https://www.nuget.org/packages/Nickvision.GirExt/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'/></a>
 
 # Example
 

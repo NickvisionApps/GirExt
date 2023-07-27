@@ -19,6 +19,10 @@ public unsafe static partial class GtkExt
     [LibraryImport("gtk")]
     private static partial void gtk_color_dialog_button_set_rgba(nint button, ref GdkExt.RGBA rgba);
     [LibraryImport("gtk")]
+    private static partial GLibList* gtk_flow_box_get_selected_children(nint box);
+    [LibraryImport("gtk")]
+    private static partial int gtk_flow_box_child_get_index(nint row);
+    [LibraryImport("gtk")]
     private static partial GLibList* gtk_list_box_get_selected_rows(nint box);
     [LibraryImport("gtk")]
     private static partial int gtk_list_box_row_get_index(nint row);
@@ -43,6 +47,23 @@ public unsafe static partial class GtkExt
     {
         Resolver.SetResolver();
         gtk_color_dialog_button_set_rgba(button.Handle, ref color);
+    }
+
+    /// <summary>
+    /// Helper extension method for Gtk.FlowBox to get indices of selected children
+    /// </summary>
+    /// <param name="box">Flow box</param>
+    /// <returns>List of indices</returns>
+    public static List<int> GetSelectedChildrenIndices(this Gtk.FlowBox box)
+    {
+        Resolver.SetResolver();
+        var list = new List<int>();
+        var firstSelectedRowPtr = gtk_flow_box_get_selected_children(box.Handle);
+        for(var ptr = firstSelectedRowPtr; ptr != null; ptr = ptr->next)
+        {
+            list.Add(gtk_flow_box_child_get_index(ptr->data));
+        }
+        return list;
     }
 
     /// <summary>
