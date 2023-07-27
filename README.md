@@ -34,6 +34,8 @@ Currently implemented:
     * ColorDialog
       * GetExtRgba
       * SetExtRgba
+    * FlowBox
+      * GetSelectedChildrenIndices
     * ListBox
       * GetSelectedRowsIndices
 * External<sup>[2]</sup>
