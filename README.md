@@ -16,6 +16,7 @@ Currently implemented:
   * Helpers<sup>[1]</sup>
     * GdkExt.RGBA
       * Parse
+      * ToString
 * Gtk
   * AlertDialog
     * ChooseAsync
