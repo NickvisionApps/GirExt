@@ -11,7 +11,6 @@ public static partial class GdkExt
     [return: MarshalAs(UnmanagedType.I1)]
     private static partial bool gdk_rgba_parse(out RGBA rgba, string spec);
     [LibraryImport("gtk", StringMarshalling = StringMarshalling.Utf8)] // Using "gdk" doesn't work here for some reason
-    [return: MarshalAs(UnmanagedType.I1)]
     private static partial string gdk_rgba_to_string(ref RGBA rgba);
     
     /// <summary>
