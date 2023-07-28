@@ -10,6 +10,8 @@ public static partial class GdkExt
     [LibraryImport("gtk", StringMarshalling = StringMarshalling.Utf8)] // Using "gdk" doesn't work here for some reason
     [return: MarshalAs(UnmanagedType.I1)]
     private static partial bool gdk_rgba_parse(out RGBA rgba, string spec);
+    [LibraryImport("gtk", StringMarshalling = StringMarshalling.Utf8)] // Using "gdk" doesn't work here for some reason
+    private static partial string gdk_rgba_to_string(ref RGBA rgba);
     
     /// <summary>
     /// Helper RGBA struct. Used instead of Gdk.RGBA
@@ -51,5 +53,11 @@ public static partial class GdkExt
             colorRGBA = null;
             return false;
         }
+
+        /// <summary>
+        /// Gets a string representation of the RGBA
+        /// </summary>
+        /// <returns>The string representation of the RGBA</returns>
+        public override string ToString() => gdk_rgba_to_string(ref this);
     }
 }

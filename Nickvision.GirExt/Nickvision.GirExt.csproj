@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.GirExt</PackageId>
-    <Version>2023.7.2</Version>
+    <Version>2023.7.3</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Extensions library for gir.core</Description>
@@ -14,9 +14,7 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/Aura</RepositoryUrl>
-    <PackageReleaseNotes>- Added helper Gtk.FlowBox.GetSelectedChildrenIndices
-- Added Gtk.AlertDialog.ChooseAsync
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>- Added GdkExt.RGBA.ToString()</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 
