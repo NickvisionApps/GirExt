@@ -1,3 +1,5 @@
+THIS PROJECT IS NOW DEPRECATED AS GIR.CORE NOW INCLUDES THESE FEATURES
+
 [![Nuget](https://img.shields.io/nuget/v/Nickvision.GirExt)](https://www.nuget.org/packages/Nickvision.GirExt/)
 
 # Nickvision.GirExt
